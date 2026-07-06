@@ -40,6 +40,14 @@ class Reservation(Base):
     table = relationship("Table")
     user = relationship("User")
 
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    telegram_id: Mapped[int] = mapped_column()
+    full_name: Mapped[str] = mapped_column(String(30))
+    username: Mapped[str] = mapped_column(String(30))
+    role: Mapped[str] = mapped_column(String(30))
 
 async def start_running():
     async with engine.begin() as conn:
