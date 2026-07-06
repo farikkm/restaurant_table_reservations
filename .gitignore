@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Environment variables
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# SQLite
+*.sqlite3
+db.sqlite3
+
+# Pytest
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# aiogram FSM / temp files
+*.session
+*.sessions
+
+# Docker
+docker-compose.override.yml
+
+# Airflow
+airflow.db
+logs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node.js (если есть frontend/admin panel)
+node_modules/
+
+# Telegram bot uploads
+uploads/
+media/
+temp/
