@@ -6,4 +6,4 @@ router = Router()
 
 @router.message(Command("custom"))
 async def custom_command(message: Message) -> None:
-    await message.answer("Это моя кастомная функция")
+    await message.answer("")
