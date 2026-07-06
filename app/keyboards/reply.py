@@ -1,7 +1,11 @@
-from aiogram.types import ReplyKeyboardMarkup
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
-def custom_builder(
-        params: list[str] | None
-) -> ReplyKeyboardMarkup:
-    pass
+
+def main_menu_kb() -> ReplyKeyboardMarkup:
+    builder = ReplyKeyboardBuilder()
+    builder.add(KeyboardButton(text="🍽 Забронировать столик"))
+    builder.add(KeyboardButton(text="📋 Мои бронирования"))
+    builder.add(KeyboardButton(text="ℹ️ О ресторане"))
+    builder.adjust(1)
+    return builder.as_markup(resize_keyboard=True)
