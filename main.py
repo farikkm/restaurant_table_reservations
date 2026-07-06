@@ -18,6 +18,8 @@ logger = logging.getLogger(__name__)
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
+if not TOKEN:
+    raise RuntimeError("BOT_TOKEN is not set. Check your .env file or environment variables.")
 
 dp = Dispatcher(storage=MemoryStorage())
 dp.include_router(start_router)
