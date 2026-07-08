@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from aiogram import Router
-from aiogram.filters import Command
+from aiogram.filters import Command, CommandStart
 from aiogram.types import Message, FSInputFile, InlineKeyboardMarkup, InlineKeyboardButton
 
 from app.keyboards.reply import main_menu_kb

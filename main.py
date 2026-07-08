@@ -10,8 +10,8 @@ from aiogram.fsm.storage.memory import MemoryStorage
 
 from app.handlers.start import router as start_router
 from app.handlers.booking import router as booking_router
-from app.handlers.my_bookings import router as my_bookings_router
-from app.handlers.custom import router as custom_router
+# !!! Доработать - потом подключить
+# from app.handlers.my_bookings import router as my_bookings_router
 
 setup_logger()
 logger = logging.getLogger(__name__)
@@ -24,8 +24,7 @@ if not TOKEN:
 dp = Dispatcher(storage=MemoryStorage())
 dp.include_router(start_router)
 dp.include_router(booking_router)
-dp.include_router(my_bookings_router)
-dp.include_router(custom_router)
+# dp.include_router(my_bookings_router)
 
 
 async def main() -> None:

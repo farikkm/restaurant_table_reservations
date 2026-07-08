@@ -4,7 +4,6 @@ from aiogram.fsm.context import FSMContext
 
 from app.states.booking import BookingStates
 from app.keyboards.inline import guests_kb, dates_kb, times_kb, confirm_kb
-from app.storage.db import add_booking
 
 router = Router()
 
@@ -48,24 +47,6 @@ async def choose_time(callback: CallbackQuery, state: FSMContext) -> None:
     )
     await callback.message.edit_text(text, reply_markup=confirm_kb())
     await callback.answer()
-
-
-@router.callback_query(BookingStates.confirming, F.data == "confirm:yes")
-async def confirm_booking(callback: CallbackQuery, state: FSMContext) -> None:
-    data = await state.get_data()
-    booking_id = add_booking(
-        user_id=callback.from_user.id,
-        guests=data["guests"],
-        date=data["date"],
-        time=data["time"],
-    )
-    await state.clear()
-    await callback.message.edit_text(
-        f"✅ Бронирование #{booking_id} оформлено!\n"
-        f"Ждём вас {data['date']} в {data['time']}."
-    )
-    await callback.answer()
-
 
 @router.callback_query(BookingStates.confirming, F.data == "confirm:no")
 async def cancel_booking_fsm(callback: CallbackQuery, state: FSMContext) -> None:
