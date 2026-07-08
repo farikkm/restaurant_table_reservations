@@ -12,8 +12,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 
 from app.handlers.start import router as start_router
 from app.handlers.booking import router as booking_router
-# !!! Доработать - потом подключить
-# from app.handlers.my_bookings import router as my_bookings_router
+
 
 setup_logger()
 logger = logging.getLogger(__name__)
