@@ -36,8 +36,8 @@ def times_kb() -> InlineKeyboardMarkup:
 
 def confirm_kb() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    builder.button(text="✅ Подтвердить", callback_data="confirm:yes")
-    builder.button(text="❌ Отменить", callback_data="confirm:no")
+    builder.button(text="✅ Да", callback_data="confirm:yes")
+    builder.button(text="❌ Нет", callback_data="confirm:no")
     builder.adjust(2)
     return builder.as_markup()
 
