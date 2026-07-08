@@ -1,4 +1,6 @@
 import logging
+
+from app.db.models import start_running
 from app.utils.logger_config import setup_logger
 
 from os import getenv
@@ -28,6 +30,8 @@ dp.include_router(booking_router)
 
 
 async def main() -> None:
+    await start_running()
+
     bot = Bot(token=TOKEN)
     await dp.start_polling(bot)
 
