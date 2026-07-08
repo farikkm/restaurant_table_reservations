@@ -25,6 +25,7 @@ venv/
 # SQLite
 *.sqlite3
 db.sqlite3
+db.sqlite3-journal
 
 # Pytest
 .pytest_cache/
