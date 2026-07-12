@@ -7,11 +7,14 @@ from aiogram.types import Message, FSInputFile, InlineKeyboardMarkup, InlineKeyb
 from app.keyboards.reply import main_menu_kb
 
 router = Router()
-BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent  # поднимаемся на уровень выше
 photo_path = BASE_DIR / "img" / "images.png"
 
-@router.message(Command("start"))
-async def start(message: Message):
+
+@router.message(CommandStart())
+async def command_start_handler(message: Message) -> None:
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text="🍽 Забронировать столик", callback_data="btn1")],
@@ -20,21 +23,21 @@ async def start(message: Message):
         ]
     )
 
-
-@router.message(CommandStart())
-async def command_start_handler(message: Message) -> None:
     await message.answer(
         "Привет! Я бот для бронирования столиков в ресторане.\n"
         "Выберите действие:",
         reply_markup=main_menu_kb(),
     )
+
     if photo_path.exists():
         photo = FSInputFile(str(photo_path))
         await message.answer_photo(
             photo=photo,
+            caption="Добро пожаловать в наш ресторан!",
             reply_markup=keyboard
         )
     else:
         await message.answer(
+            "Добро пожаловать!",
             reply_markup=keyboard
         )
